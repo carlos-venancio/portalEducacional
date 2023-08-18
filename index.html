@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+
+<body>
+    <header class="menu-principal">
+        <img src="/img/logo.png">
+        <p>Portal Educacional</p>              
+    </header>
+    <main> 
+        <div class="colum">
+            <div class="colum-dados">
+                <div class="container-nome">
+                    <label for="nome" class="colum-aluno">Nome do Aluno:</label>
+                    <input type="text" class="nome" id="nome" required>
+                </div>
+                <div class="container-notas">
+                    <div class="container-nota1">
+                        <label for="nota" class="label-nota1">1° Nota</label>
+                        <input type="number" class="nota1" id="nota1" required>
+                    </div> 
+                    <div class="container-nota2">
+                        <label for="nota" class="label-nota2">2° Nota</label>
+                        <input type="number" class="nota2" id="nota2" required>
+                    </div>
+                    <div class="container-nota3">
+                        <label for="nota" class="label-nota3">3° Nota</label>
+                        <input type="number" class="nota3" id="nota3" required>
+                    </div>
+                    <div class="container-nota4">
+                        <label for="nota" class="label-nota4">4° Nota</label>
+                        <input type="number" class="nota4" id="nota4" required>
+                    </div>
+                    <div class="botao">
+                        <button class="botao1" onclick="direcionar()">
+                            <img src="/img/check.png">       
+                        </button>
+                    </div>
+                </div>
+                <button class="btn" onclick="calcularMedia()">Finalizar</button>
+                <div class="container-resultado">
+                    <table class="tabela-up">
+                        <thead>
+                            <td class="tabela-nome"> 
+                            <p>Nome</p>  
+                            </td>
+                            <td> Nota 1 </td>
+                            <td> Nota 2 </td>
+                            <td> Nota 3 </td>
+                            <td> Nota 4 </td>
+                            <td> Média final </td>
+                            <td> Situação </td>
+                            <td> Média final </td>
+                            <td></td>
+                        </thead>
+                        <tbody>
+                
+                        </tbody>
+                    </table>
+                </div>
+                <script src="script.js"></script>
+            </div> 
+        </div> 
+        <h2 id="mediaFinal"></h2>
+    </main>
+</body>
+</html>
