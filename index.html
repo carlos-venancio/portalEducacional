@@ -17,12 +17,12 @@
             <div class="colum-dados">
                 <div class="container-nome">
                     <label for="nome" class="colum-aluno">Nome do Aluno:</label>
-                    <input type="text" class="nome" id="nome" required>
+                    <input type="text" class="nome" id="nome" maxlength="50" required />
                 </div>
                 <div class="container-notas">
                     <div class="container-nota1">
                         <label for="nota" class="label-nota1">1° Nota</label>
-                        <input type="number" class="nota1" id="nota1" required>
+                        <input type="number" class="nota1" id="nota1" oninput="validarNumero(this)" required>
                     </div> 
                     <div class="container-nota2">
                         <label for="nota" class="label-nota2">2° Nota</label>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="container-nota4">
                         <label for="nota" class="label-nota4">4° Nota</label>
-                        <input type="number" class="nota4" id="nota4" required>
+                        <input type="number" class="nota4" id="nota4" on required>
                     </div>
                     <div class="botao">
                         <button class="botao1" onclick="direcionar()">
@@ -46,8 +46,9 @@
                 <div class="container-resultado">
                     <table class="tabela-up">
                         <thead>
+                            <!-- <td> Indice </td> -->
                             <td class="tabela-nome"> 
-                            <p>Nome</p>  
+                                <p>Nome</p>  
                             </td>
                             <td> Nota 1 </td>
                             <td> Nota 2 </td>

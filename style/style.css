@@ -31,6 +31,11 @@ input {
     font-size: large;
 }
 
+input {
+    padding: 7px;
+    border-radius: 5px;
+}
+
 .colum-dados{
     width: 60%;
     margin: auto;

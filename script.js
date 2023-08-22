@@ -29,6 +29,11 @@ function adicionar(nome,nota1,nota2,nota3,nota4) {
 }
 
 function direcionar(){
+    
+    if (!document.getElementById('nome').value){
+        alert('Nome vazio! Insira um nome e tente novamente')
+        return
+    }
 
     let nome = document.getElementById('nome').value
     let n1  = parseFloat(document.getElementById('nota1').value)
@@ -43,6 +48,13 @@ function direcionar(){
  
     adicionar(nome,n1,n2,n3,n4)
 
+    // limpa os inputs depois de usar
+    document.getElementById('nome').value = ''
+    document.getElementById('nota1').value = ''
+    document.getElementById('nota2').value = ''
+    document.getElementById('nota3').value = ''
+    document.getElementById('nota4').value = ''
+    
     // controle das linhas
 }
 
@@ -90,4 +102,16 @@ function remove(linha){
 
     ln -= 1
     medias.pop(linha)
+}
+
+function validarNumero(num){
+
+    if (num.value[-1] == 'e') num.value 
+
+    if (num.value > 100) {
+        alert('Coloque um valor entre 0 e 100')
+        num.value = '100'
+    }
+
+
 }
