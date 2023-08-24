@@ -1,6 +1,5 @@
 // armazena as notas dos alunos 
 var medias = []
-var mediaGeral = 0
 // controle da quantidade de alunos
 var ln = 0
 
@@ -33,7 +32,7 @@ function direcionar(){
     if (!document.getElementById('nome').value){
         alert('Nome vazio! Insira um nome e tente novamente')
         return
-    }
+    } 
 
     let nome = document.getElementById('nome').value
     let n1  = parseFloat(document.getElementById('nota1').value)
@@ -44,16 +43,15 @@ function direcionar(){
     media = (n1 + n2 + n3 + n4) / 4
     // arrumar metodo para inserir na posição correta
     medias.push(media)
-    mediaGeral += media
  
     adicionar(nome,n1,n2,n3,n4)
 
     // limpa os inputs depois de usar
-    document.getElementById('nome').value = ''
-    document.getElementById('nota1').value = ''
-    document.getElementById('nota2').value = ''
-    document.getElementById('nota3').value = ''
-    document.getElementById('nota4').value = ''
+    // document.getElementById('nome').value = ''
+    // document.getElementById('nota1').value = ''
+    // document.getElementById('nota2').value = ''
+    // document.getElementById('nota3').value = ''
+    // document.getElementById('nota4').value = ''
     
     // controle das linhas
 }
@@ -61,38 +59,43 @@ function direcionar(){
 // Pega o valor da nota e coloque na tabela,alem da situação e nivel correspodente a media geral
 function calcularMedia(){
 
-    // calculo da media geral
-    mediaGeral = mediaGeral / ln
-    document.getElementById('mediaFinal').innerHTML = `A média geral é ${mediaGeral}`
-    
-    // alteração dos campos de cada aluno
-    for (i = 0; i < ln + 1;i++){
-        document.getElementsByClassName('media')[i].innerHTML = medias[i] 
+    if (ln < 5){
+        alert('Insira no mínimo 5 alunos')
+    } else {
+        // calculo da media geral
+        let mediaGeral = medias.reduce((total,num) => total + num,0) / ln
+        document.getElementById('mediaFinal').innerHTML = `A média geral é ${mediaGeral}`
         
-        document.getElementsByClassName('situacao')[i].style.color = 'white'
-        
-        // define a situação do aluno
-        if (medias[i] >= 70){
-            document.getElementsByClassName('situacao')[i].style.background = 'green'
-            document.getElementsByClassName('situacao')[i].innerHTML = 'Aprovado'
-        }else if(medias[i] >= 50){
-            document.getElementsByClassName('situacao')[i].style.background = 'yellow'
-            document.getElementsByClassName('situacao')[i].innerHTML = 'Recuperação'
+        // alteração dos campos de cada aluno
+        for (i = 0; i < ln + 1;i++){
+            document.getElementsByClassName('media')[i].innerHTML = medias[i] 
             
-        }else{
-            document.getElementsByClassName('situacao')[i].style.background = 'red'
-            document.getElementsByClassName('situacao')[i].innerHTML = 'Reprovado'
-        }
-        
-        // determina a posição do aluno media geral
-        if (medias[i] > mediaGeral) {
-            document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Acima' 
-        }else if (medias[i] == mediaGeral){
-            document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Mediano' 
-        }else {
-            document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Baixo' 
+            document.getElementsByClassName('situacao')[i].style.color = 'white'
+            
+            // define a situação do aluno
+            if (medias[i] >= 70){
+                document.getElementsByClassName('situacao')[i].style.background = 'green'
+                document.getElementsByClassName('situacao')[i].innerHTML = 'Aprovado'
+            }else if(medias[i] >= 50){
+                document.getElementsByClassName('situacao')[i].style.background = 'yellow'
+                document.getElementsByClassName('situacao')[i].innerHTML = 'Recuperação'
+                
+            }else{
+                document.getElementsByClassName('situacao')[i].style.background = 'red'
+                document.getElementsByClassName('situacao')[i].innerHTML = 'Reprovado'
+            }
+            
+            // determina a posição do aluno media geral
+            if (medias[i] > mediaGeral) {
+                document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Acima' 
+            }else if (medias[i] == mediaGeral){
+                document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Mediano' 
+            }else {
+                document.getElementsByClassName('mediaFinal')[i].innerHTML = 'Baixo' 
+            }
         }
     }
+
 }
 
 // Função para limpar a tabela
@@ -106,12 +109,15 @@ function remove(linha){
 
 function validarNumero(num){
 
-    if (num.value[-1] == 'e') num.value 
-
-    if (num.value > 100) {
-        alert('Coloque um valor entre 0 e 100')
-        num.value = '100'
+    if (num.value[num.value.length - 1] == 'e') {
+        console.log(num.value)
+        num.value = num.value.slice(0,num.value.indexOf('e'))
     }
 
-
+    else if (num.value.length > 3) {
+        num.value = '100'
+    }
 }
+
+// document.getElementById('nota1').value
+// let a = document.getElementById('nota1').value.substr(-1)
